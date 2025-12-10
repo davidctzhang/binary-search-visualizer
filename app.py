@@ -2,7 +2,7 @@ import gradio as gr
 
 # --state & helpers--
 
-def init_state():
+def init_state():       # state dictionary to store variables across button clicks in Gradio. "memory" of the algorithm
     return{
         "array": [],
         "target": None,
@@ -41,7 +41,7 @@ def parse_inputs(array_str, target_str):
 
     return nums, target
 
-def render_array(state):
+def render_array(state):        # visual representation of array, including high and low, mid. displayed using markdown in UI
     if not state["array"]:
         return "Array will appear here once you start the program!"
     
@@ -60,7 +60,7 @@ def render_array(state):
 
     return " | ".join(pieces)
 
-def render_status(state):
+def render_status(state):       # multiline status describing current step, low/mid/high, short explanation
     if not state["array"]:
         return "Status will appear here."
     
@@ -83,7 +83,7 @@ def render_status(state):
 
 # --callbacks--
 
-def start_search(array_str, target_str, state):
+def start_search(array_str, target_str, state):     # initialize search, parse user inputs, reset state vars, set low and high pointers. also prepares UI.
     nums, target = parse_inputs(array_str, target_str)
 
     state = init_state()
@@ -96,7 +96,7 @@ def start_search(array_str, target_str, state):
 
     return render_array(state), render_status(state), state
 
-def next_step(state):
+def next_step(state):       # ONE STEp of binary search. check if search is finished, compute mid, compare mid with target, update low and high, set appropriate status message.runs with "next step" button.
     if not state["array"]:
         state["message"] = "Start the search first!"
         return render_array(state), render_status(state), state
