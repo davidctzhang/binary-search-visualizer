@@ -63,7 +63,7 @@
 # python app.py
 
 ## Hugging Face Link
-
+https://huggingface.co/spaces/davidctzhang/binary-search-visualizer
 
 ## Author & Acknowledgment
 all code written by myself, AI level 4 used to help me add appropriate comments for readability. also to help me understand huggingface (not relevant in github). AI was also used in debugging step, where it caught an indentation error on line 18. 
